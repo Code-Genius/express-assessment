@@ -9,16 +9,16 @@ describe('Todo model', function() {
   });
 
   describe('`listPeople` and `add`', function() {
-    xit('initially returns an empty array', function() {
+    it('initially returns an empty array', function() {
       expect(Todos.listPeople()).to.eql([]);
     });
 
-    xit('lists people after they have todos added', function() {
+    it('lists people after they have todos added', function() {
       Todos.add('zeke', { content: 'clean room' });
       expect(Todos.listPeople()).to.eql(['zeke']);
     });
 
-    xit('handles multiple people with multiple todos', function(){
+    it('handles multiple people with multiple todos', function(){
       Todos.add('zeke', { content: 'clean room' });
       Todos.add('zeke', { content: 'write mom' });
       expect(Todos.listPeople()).to.eql(['zeke']);
@@ -28,7 +28,7 @@ describe('Todo model', function() {
   });
 
   describe('`add` and `list`', function() {
-    xit('remembers who does what', function() {
+    it('remembers who does what', function() {
       Todos.add('zeke', { content: 'clean bath room' });
       expect(Todos.list('zeke')).to.have.length(1);
       Todos.add('omri', { content: 'clean living room' });
@@ -39,20 +39,21 @@ describe('Todo model', function() {
   });
 
   describe('`complete`', function() {
-    xit('has a `complete` boolean set to false for any new tasks', function() {
+    it('has a `complete` boolean set to false for any new tasks', function() {
       Todos.add('zeke', { content: 'clean self' });
       expect(Todos.list('zeke')[0].complete).to.be.false;
     });
 
-    xit("sets a specified task's `complete` property to true", function() {
+    it("sets a specified task's `complete` property to true", function() {
       Todos.add('zeke', { content: 'go to store' });
       Todos.complete('zeke', 0);
+      console.log(Todos.list('zeke'))
       expect(Todos.list('zeke')[0].complete).to.be.true;
     });
   });
 
   describe('`remove`', function() {
-    xit('removes a task, by index, for a given person', function() {
+    it('removes a task, by index, for a given person', function() {
        Todos.add('zeke', { content: 'task 0' });
        Todos.add('zeke', { content: 'task 1' });
        Todos.add('zeke', { content: 'task 2' });
